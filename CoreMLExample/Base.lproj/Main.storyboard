@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,67 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreMLExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EBH-gu-ipf">
+                                <rect key="frame" x="16" y="20" width="343" height="328"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Image Selected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-ua-Jnp">
+                                <rect key="frame" x="90.5" y="356" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xth-3e-LoU">
+                                <rect key="frame" x="16" y="474" width="343" height="28"/>
+                                <segments>
+                                    <segment title="GooglePlaces"/>
+                                    <segment title="SqueezeNet"/>
+                                    <segment title="ResNet50"/>
+                                </segments>
+                                <connections>
+                                    <action selector="modelSelectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Kvu-jl-Own"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS1-k4-xCx">
+                                <rect key="frame" x="172" y="414" width="30" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="📷"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PLU-H7-KgV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Eu8-ua-Jnp" firstAttribute="centerX" secondItem="rS1-k4-xCx" secondAttribute="centerX" constant="-24" id="4Yq-UW-0TQ"/>
+                            <constraint firstItem="EBH-gu-ipf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ck1-QD-o6j"/>
+                            <constraint firstItem="xth-3e-LoU" firstAttribute="trailing" secondItem="EBH-gu-ipf" secondAttribute="trailing" id="DBd-MQ-R21"/>
+                            <constraint firstItem="rS1-k4-xCx" firstAttribute="top" secondItem="EBH-gu-ipf" secondAttribute="bottom" constant="66" id="Nfg-vJ-mR7"/>
+                            <constraint firstItem="EBH-gu-ipf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Os2-Ee-FIg"/>
+                            <constraint firstItem="rS1-k4-xCx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="156" id="PCv-hx-fkE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rS1-k4-xCx" secondAttribute="bottom" constant="214" id="hM1-E4-qDN"/>
+                            <constraint firstItem="xth-3e-LoU" firstAttribute="leading" secondItem="EBH-gu-ipf" secondAttribute="leading" id="iaZ-8u-r0d"/>
+                            <constraint firstItem="Eu8-ua-Jnp" firstAttribute="top" secondItem="EBH-gu-ipf" secondAttribute="bottom" constant="8" symbolic="YES" id="jHe-Sg-HRb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xth-3e-LoU" secondAttribute="bottom" constant="166" id="sUk-96-0Dw"/>
+                            <constraint firstItem="rS1-k4-xCx" firstAttribute="top" secondItem="EBH-gu-ipf" secondAttribute="bottom" constant="66" id="vYX-Bh-Ha6"/>
+                            <constraint firstItem="rS1-k4-xCx" firstAttribute="leading" secondItem="EBH-gu-ipf" secondAttribute="leading" constant="156" id="xZY-iJ-Esx"/>
+                            <constraint firstItem="xth-3e-LoU" firstAttribute="top" secondItem="rS1-k4-xCx" secondAttribute="bottom" constant="21" id="yGs-he-FqM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="classifierLabel" destination="Eu8-ua-Jnp" id="NC6-vd-4QB"/>
+                        <outlet property="mainImageView" destination="EBH-gu-ipf" id="cAx-pW-vix"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-79.200000000000003" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
