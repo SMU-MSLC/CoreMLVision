@@ -14,6 +14,9 @@
 		B64430051F5F6939004BAB45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64430031F5F6939004BAB45 /* LaunchScreen.storyboard */; };
 		B64430101F5F6939004BAB45 /* CoreMLExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B644300F1F5F6939004BAB45 /* CoreMLExampleTests.swift */; };
 		B644301B1F5F6939004BAB45 /* CoreMLExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B644301A1F5F6939004BAB45 /* CoreMLExampleUITests.swift */; };
+		B644306C1F60531E004BAB45 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B644306B1F605202004BAB45 /* SqueezeNet.mlmodel */; };
+		B6552CFA1F60D5890092FB79 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6552CF91F60D5850092FB79 /* Resnet50.mlmodel */; };
+		B6552CFC1F60D5C00092FB79 /* GoogLeNetPlaces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6552CFB1F60D5BD0092FB79 /* GoogLeNetPlaces.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		B64430161F5F6939004BAB45 /* CoreMLExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B644301A1F5F6939004BAB45 /* CoreMLExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExampleUITests.swift; sourceTree = "<group>"; };
 		B644301C1F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B644306B1F605202004BAB45 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
+		B6552CF91F60D5850092FB79 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		B6552CFB1F60D5BD0092FB79 /* GoogLeNetPlaces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GoogLeNetPlaces.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,9 @@
 		B6442FEE1F5F6938004BAB45 = {
 			isa = PBXGroup;
 			children = (
+				B644306B1F605202004BAB45 /* SqueezeNet.mlmodel */,
+				B6552CF91F60D5850092FB79 /* Resnet50.mlmodel */,
+				B6552CFB1F60D5BD0092FB79 /* GoogLeNetPlaces.mlmodel */,
 				B6442FF91F5F6939004BAB45 /* CoreMLExample */,
 				B644300E1F5F6939004BAB45 /* CoreMLExampleTests */,
 				B64430191F5F6939004BAB45 /* CoreMLExampleUITests */,
@@ -259,7 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6552CFA1F60D5890092FB79 /* Resnet50.mlmodel in Sources */,
+				B6552CFC1F60D5C00092FB79 /* GoogLeNetPlaces.mlmodel in Sources */,
 				B6442FFD1F5F6939004BAB45 /* ViewController.swift in Sources */,
+				B644306C1F60531E004BAB45 /* SqueezeNet.mlmodel in Sources */,
 				B6442FFB1F5F6939004BAB45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = APD62CDC25;
 				INFOPLIST_FILE = CoreMLExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = APD62CDC25;
 				INFOPLIST_FILE = CoreMLExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,6 +9,7 @@
 import UIKit
 import CoreML
 import Vision
+import CoreImage
 
 class ViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -86,20 +87,49 @@ extension ViewController: UIImagePickerControllerDelegate {
             return
         }
         
-        classifyImage(image: image)
-        mainImageView.image = image
+        let newImage = classifyImage(image: image)
+        mainImageView.image = newImage
     }
     
     //MARK: Custom Classification Methods
     // use vision API to classify image
-    func classifyImage(image:UIImage){
+    func classifyImage(image:UIImage) -> (UIImage){
+        // Todo: is there anything we can try to make this more accurate?
+        // Perhaps: -crop image so it isn't squashed
+        //          -increase contrast
+        //          -add some blurring/noise filters
+        
+        
+        var cgImage: CGImage? = nil
+        
+        // try to apply a cropping filter
+        var ciImage = CIImage(cgImage: image.cgImage!)
+        let filter = CIFilter(name:"CICrop")
+        filter?.setValue(CIVector(x: 0, y: 0, z: 224, w: 224), forKey: "inputRectangle")
+        filter?.setValue(ciImage, forKey: "inputImage")
+        ciImage = (filter?.outputImage)!
+
+        cgImage = ciImage.cgImage
+        
+        if cgImage == nil{
+            cgImage = image.cgImage
+        }
+        
+        // generate request for vision and ML model
         let request = VNCoreMLRequest(model: self.model!, completionHandler: resultsMethod)
-        let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
+        
+        // add data to vision request handler
+        let handler = VNImageRequestHandler(cgImage: cgImage!, options: [:])
+        
+        // now perform classification
         do{
             try handler.perform([request])
         }catch _{
             self.classifierLabel.text = "Error, could not classify"
         }
+        
+        // todo return the UIIMage for display
+        return UIImage(cgImage: cgImage!, scale: image.scale, orientation: image.imageOrientation)
     }
     
     //interpret results from vision query
