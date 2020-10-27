@@ -17,6 +17,37 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var classifierLabel: UILabel!
     
+    lazy var googLeNet:GoogLeNetPlaces = {
+        do{
+            let config = MLModelConfiguration()
+            return try GoogLeNetPlaces(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load GoogLeNet")
+        }
+    }()
+    
+    lazy var squeezeNet:SqueezeNet = {
+        do{
+            let config = MLModelConfiguration()
+            return try SqueezeNet(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load SqueezeNet")
+        }
+    }()
+    
+    lazy var resNet:Resnet50 = {
+        do{
+            let config = MLModelConfiguration()
+            return try Resnet50(configuration: config)
+        }catch{
+            print(error)
+            fatalError("Could not load Resnet50")
+        }
+    }()
+    
+    var needProcessing = true
     
     
     override func viewDidLoad() {
@@ -27,7 +58,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     //MARK: ML Model Load
     // Load an image classifier and encapsulate in the Vision model class
     lazy var model: VNCoreMLModel? = {
-        guard let tmpModel = try? VNCoreMLModel(for: GoogLeNetPlaces().model) else {
+        guard let tmpModel = try? VNCoreMLModel(for: googLeNet.model) else {
             return nil
         }
        return tmpModel
@@ -37,17 +68,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBAction func modelSelectChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            guard let tmpModel = try? VNCoreMLModel(for: GoogLeNetPlaces().model) else {
+            guard let tmpModel = try? VNCoreMLModel(for: googLeNet.model) else {
                 return
             }
             model = tmpModel
         case 1:
-            guard let tmpModel = try? VNCoreMLModel(for: SqueezeNet().model) else {
+            guard let tmpModel = try? VNCoreMLModel(for: squeezeNet.model) else {
                 return
             }
             model = tmpModel
         case 2:
-            guard let tmpModel = try? VNCoreMLModel(for: Resnet50().model) else {
+            guard let tmpModel = try? VNCoreMLModel(for: resNet.model) else {
                 return
             }
             model = tmpModel
@@ -89,15 +120,23 @@ extension ViewController: UIImagePickerControllerDelegate {
             return
         }
         
-        let newImage = classifyImage(image: image)
-        mainImageView.image = newImage
+        // perform this on a background queue
+        DispatchQueue.global().async {
+            self.needProcessing = true
+            let newImage = self.classifyImage(image: image)
+            
+            // use update on new queue
+            DispatchQueue.main.async{
+                self.mainImageView.image = newImage
+            }
+        }
+        
     }
     
     //MARK: Custom Classification Methods
     // use vision API to classify image
     func classifyImage(image:UIImage) -> (UIImage){
-        // Todo: is there anything we can try to make this more accurate?
-        // Perhaps: -crop image so it isn't squashed
+        // Filters: -crop image so it isn't squashed
         //          -increase contrast
         //          -add some blurring/noise filters
         
@@ -112,34 +151,42 @@ extension ViewController: UIImagePickerControllerDelegate {
         
         var cgImage: CGImage? = nil
         
-        // try to apply a cropping filter
-        var ciImage = CIImage(cgImage: image.cgImage!)
-        let filter = CIFilter(name:"CICrop")
-        filter?.setValue(CIVector(x: 500, y: 500, z: 500+224*3, w: 500+224*3), forKey: "inputRectangle")
-        filter?.setValue(ciImage, forKey: "inputImage")
+        if self.needProcessing {
         
-        ciImage = (filter?.outputImage)!
-        
-        // apply filter for scaling image by factor of 1/3
-        // as the image is expected to be 224x224 for these models
-        let filter2 = CIFilter(name:"CILanczosScaleTransform")
-        filter2?.setValue(0.33, forKey: "inputScale")
-        filter2?.setValue(ciImage, forKey: "inputImage")
-        ciImage = (filter2?.outputImage)!
-        
-        cgImage = convertCIImageToCGImage(inputImage: ciImage)
-        
-        // enhance contrast of image
-        let filter3 = CIFilter(name:"CIColorControls")
-        filter3?.setValue(1.5, forKey: "inputContrast")
-        filter3?.setValue(ciImage, forKey: "inputImage")
-        ciImage = (filter3?.outputImage)!
-        
-        cgImage = convertCIImageToCGImage(inputImage: ciImage)
-        
-        if cgImage == nil{
+            // try to apply a cropping filter
+            var ciImage = CIImage(cgImage: image.cgImage!)
+            let filter = CIFilter(name:"CICrop")
+            filter?.setValue(CIVector(x: 500, y: 500, z: 500+224*3, w: 500+224*3), forKey: "inputRectangle")
+            filter?.setValue(ciImage, forKey: "inputImage")
+            
+            ciImage = (filter?.outputImage)!
+            
+            // apply filter for scaling image by factor of 1/3
+            // as the image is expected to be 224x224 for these models
+            let filter2 = CIFilter(name:"CILanczosScaleTransform")
+            filter2?.setValue(0.33, forKey: "inputScale")
+            filter2?.setValue(ciImage, forKey: "inputImage")
+            ciImage = (filter2?.outputImage)!
+            
+            cgImage = convertCIImageToCGImage(inputImage: ciImage)
+            
+            // enhance contrast of image
+            let filter3 = CIFilter(name:"CIColorControls")
+            filter3?.setValue(1.5, forKey: "inputContrast")
+            filter3?.setValue(ciImage, forKey: "inputImage")
+            ciImage = (filter3?.outputImage)!
+            
+            cgImage = convertCIImageToCGImage(inputImage: ciImage)
+            self.needProcessing = false
+        }
+        else{
+            // if no processing needed, just set image
             cgImage = image.cgImage
         }
+        
+//        if cgImage == nil{
+//            cgImage = image.cgImage
+//        }
         
         // generate request for vision and ML model
         let request = VNCoreMLRequest(model: self.model!, completionHandler: resultsMethod)
