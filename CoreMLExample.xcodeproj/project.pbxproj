@@ -12,29 +12,10 @@
 		B64430001F5F6939004BAB45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6442FFE1F5F6939004BAB45 /* Main.storyboard */; };
 		B64430021F5F6939004BAB45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64430011F5F6939004BAB45 /* Assets.xcassets */; };
 		B64430051F5F6939004BAB45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64430031F5F6939004BAB45 /* LaunchScreen.storyboard */; };
-		B64430101F5F6939004BAB45 /* CoreMLExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B644300F1F5F6939004BAB45 /* CoreMLExampleTests.swift */; };
-		B644301B1F5F6939004BAB45 /* CoreMLExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B644301A1F5F6939004BAB45 /* CoreMLExampleUITests.swift */; };
 		B644306C1F60531E004BAB45 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B644306B1F605202004BAB45 /* SqueezeNet.mlmodel */; };
 		B6552CFA1F60D5890092FB79 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6552CF91F60D5850092FB79 /* Resnet50.mlmodel */; };
 		B6552CFC1F60D5C00092FB79 /* GoogLeNetPlaces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B6552CFB1F60D5BD0092FB79 /* GoogLeNetPlaces.mlmodel */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B644300C1F5F6939004BAB45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6442FEF1F5F6938004BAB45 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B6442FF61F5F6938004BAB45;
-			remoteInfo = CoreMLExample;
-		};
-		B64430171F5F6939004BAB45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6442FEF1F5F6938004BAB45 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B6442FF61F5F6938004BAB45;
-			remoteInfo = CoreMLExample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B6442FF71F5F6939004BAB45 /* CoreMLExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,10 +25,8 @@
 		B64430011F5F6939004BAB45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64430041F5F6939004BAB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B64430061F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B644300B1F5F6939004BAB45 /* CoreMLExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B644300F1F5F6939004BAB45 /* CoreMLExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExampleTests.swift; sourceTree = "<group>"; };
 		B64430111F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B64430161F5F6939004BAB45 /* CoreMLExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B644301A1F5F6939004BAB45 /* CoreMLExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExampleUITests.swift; sourceTree = "<group>"; };
 		B644301C1F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B644306B1F605202004BAB45 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
@@ -57,20 +36,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		B6442FF41F5F6938004BAB45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B64430081F5F6939004BAB45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B64430131F5F6939004BAB45 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -97,8 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				B6442FF71F5F6939004BAB45 /* CoreMLExample.app */,
-				B644300B1F5F6939004BAB45 /* CoreMLExampleTests.xctest */,
-				B64430161F5F6939004BAB45 /* CoreMLExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,42 +117,6 @@
 			productReference = B6442FF71F5F6939004BAB45 /* CoreMLExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B644300A1F5F6939004BAB45 /* CoreMLExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B64430221F5F6939004BAB45 /* Build configuration list for PBXNativeTarget "CoreMLExampleTests" */;
-			buildPhases = (
-				B64430071F5F6939004BAB45 /* Sources */,
-				B64430081F5F6939004BAB45 /* Frameworks */,
-				B64430091F5F6939004BAB45 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B644300D1F5F6939004BAB45 /* PBXTargetDependency */,
-			);
-			name = CoreMLExampleTests;
-			productName = CoreMLExampleTests;
-			productReference = B644300B1F5F6939004BAB45 /* CoreMLExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B64430151F5F6939004BAB45 /* CoreMLExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B64430251F5F6939004BAB45 /* Build configuration list for PBXNativeTarget "CoreMLExampleUITests" */;
-			buildPhases = (
-				B64430121F5F6939004BAB45 /* Sources */,
-				B64430131F5F6939004BAB45 /* Frameworks */,
-				B64430141F5F6939004BAB45 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B64430181F5F6939004BAB45 /* PBXTargetDependency */,
-			);
-			name = CoreMLExampleUITests;
-			productName = CoreMLExampleUITests;
-			productReference = B64430161F5F6939004BAB45 /* CoreMLExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,22 +124,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Eric Larson";
 				TargetAttributes = {
 					B6442FF61F5F6938004BAB45 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
-					};
-					B644300A1F5F6939004BAB45 = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = B6442FF61F5F6938004BAB45;
-					};
-					B64430151F5F6939004BAB45 = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = B6442FF61F5F6938004BAB45;
 					};
 				};
 			};
@@ -230,8 +147,6 @@
 			projectRoot = "";
 			targets = (
 				B6442FF61F5F6938004BAB45 /* CoreMLExample */,
-				B644300A1F5F6939004BAB45 /* CoreMLExampleTests */,
-				B64430151F5F6939004BAB45 /* CoreMLExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,20 +159,6 @@
 				B64430051F5F6939004BAB45 /* LaunchScreen.storyboard in Resources */,
 				B64430021F5F6939004BAB45 /* Assets.xcassets in Resources */,
 				B64430001F5F6939004BAB45 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B64430091F5F6939004BAB45 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B64430141F5F6939004BAB45 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,36 +177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B64430071F5F6939004BAB45 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B64430101F5F6939004BAB45 /* CoreMLExampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B64430121F5F6939004BAB45 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B644301B1F5F6939004BAB45 /* CoreMLExampleUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B644300D1F5F6939004BAB45 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B6442FF61F5F6938004BAB45 /* CoreMLExample */;
-			targetProxy = B644300C1F5F6939004BAB45 /* PBXContainerItemProxy */;
-		};
-		B64430181F5F6939004BAB45 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B6442FF61F5F6938004BAB45 /* CoreMLExample */;
-			targetProxy = B64430171F5F6939004BAB45 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B6442FFE1F5F6939004BAB45 /* Main.storyboard */ = {
@@ -341,6 +213,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -348,8 +221,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -375,7 +250,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -398,6 +273,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -405,8 +281,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -426,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -441,7 +319,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = APD62CDC25;
 				INFOPLIST_FILE = CoreMLExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -457,74 +335,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = APD62CDC25;
 				INFOPLIST_FILE = CoreMLExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		B64430231F5F6939004BAB45 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoreMLExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreMLExample.app/CoreMLExample";
-			};
-			name = Debug;
-		};
-		B64430241F5F6939004BAB45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoreMLExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreMLExample.app/CoreMLExample";
-			};
-			name = Release;
-		};
-		B64430261F5F6939004BAB45 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoreMLExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CoreMLExample;
-			};
-			name = Debug;
-		};
-		B64430271F5F6939004BAB45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoreMLExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CoreMLExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CoreMLExample;
 			};
 			name = Release;
 		};
@@ -545,24 +361,6 @@
 			buildConfigurations = (
 				B64430201F5F6939004BAB45 /* Debug */,
 				B64430211F5F6939004BAB45 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B64430221F5F6939004BAB45 /* Build configuration list for PBXNativeTarget "CoreMLExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B64430231F5F6939004BAB45 /* Debug */,
-				B64430241F5F6939004BAB45 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B64430251F5F6939004BAB45 /* Build configuration list for PBXNativeTarget "CoreMLExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B64430261F5F6939004BAB45 /* Debug */,
-				B64430271F5F6939004BAB45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

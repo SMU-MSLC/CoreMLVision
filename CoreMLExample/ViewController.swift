@@ -17,6 +17,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var classifierLabel: UILabel!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -99,17 +101,41 @@ extension ViewController: UIImagePickerControllerDelegate {
         //          -increase contrast
         //          -add some blurring/noise filters
         
+        // got this from here: http://wiki.hawkguide.com/wiki/Swift:_Convert_between_CGImage,_CIImage_and_UIImage
+        func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
+            let context = CIContext(options: nil)
+            if let cgImage = context.createCGImage(inputImage, from: inputImage.extent){
+                return cgImage
+            }
+            return nil
+        }
         
         var cgImage: CGImage? = nil
         
         // try to apply a cropping filter
         var ciImage = CIImage(cgImage: image.cgImage!)
         let filter = CIFilter(name:"CICrop")
-        filter?.setValue(CIVector(x: 0, y: 0, z: 224, w: 224), forKey: "inputRectangle")
+        filter?.setValue(CIVector(x: 500, y: 500, z: 500+224*3, w: 500+224*3), forKey: "inputRectangle")
         filter?.setValue(ciImage, forKey: "inputImage")
+        
         ciImage = (filter?.outputImage)!
-
-        cgImage = ciImage.cgImage
+        
+        // apply filter for scaling image by factor of 1/3
+        // as the image is expected to be 224x224 for these models
+        let filter2 = CIFilter(name:"CILanczosScaleTransform")
+        filter2?.setValue(0.33, forKey: "inputScale")
+        filter2?.setValue(ciImage, forKey: "inputImage")
+        ciImage = (filter2?.outputImage)!
+        
+        cgImage = convertCIImageToCGImage(inputImage: ciImage)
+        
+        // enhance contrast of image
+        let filter3 = CIFilter(name:"CIColorControls")
+        filter3?.setValue(1.5, forKey: "inputContrast")
+        filter3?.setValue(ciImage, forKey: "inputImage")
+        ciImage = (filter3?.outputImage)!
+        
+        cgImage = convertCIImageToCGImage(inputImage: ciImage)
         
         if cgImage == nil{
             cgImage = image.cgImage
