@@ -25,10 +25,6 @@
 		B64430011F5F6939004BAB45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B64430041F5F6939004BAB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B64430061F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B644300F1F5F6939004BAB45 /* CoreMLExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExampleTests.swift; sourceTree = "<group>"; };
-		B64430111F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B644301A1F5F6939004BAB45 /* CoreMLExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLExampleUITests.swift; sourceTree = "<group>"; };
-		B644301C1F5F6939004BAB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B644306B1F605202004BAB45 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		B6552CF91F60D5850092FB79 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		B6552CFB1F60D5BD0092FB79 /* GoogLeNetPlaces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GoogLeNetPlaces.mlmodel; sourceTree = "<group>"; };
@@ -52,8 +48,6 @@
 				B6552CF91F60D5850092FB79 /* Resnet50.mlmodel */,
 				B6552CFB1F60D5BD0092FB79 /* GoogLeNetPlaces.mlmodel */,
 				B6442FF91F5F6939004BAB45 /* CoreMLExample */,
-				B644300E1F5F6939004BAB45 /* CoreMLExampleTests */,
-				B64430191F5F6939004BAB45 /* CoreMLExampleUITests */,
 				B6442FF81F5F6939004BAB45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,24 +71,6 @@
 				B64430061F5F6939004BAB45 /* Info.plist */,
 			);
 			path = CoreMLExample;
-			sourceTree = "<group>";
-		};
-		B644300E1F5F6939004BAB45 /* CoreMLExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				B644300F1F5F6939004BAB45 /* CoreMLExampleTests.swift */,
-				B64430111F5F6939004BAB45 /* Info.plist */,
-			);
-			path = CoreMLExampleTests;
-			sourceTree = "<group>";
-		};
-		B64430191F5F6939004BAB45 /* CoreMLExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B644301A1F5F6939004BAB45 /* CoreMLExampleUITests.swift */,
-				B644301C1F5F6939004BAB45 /* Info.plist */,
-			);
-			path = CoreMLExampleUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
