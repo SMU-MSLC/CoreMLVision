@@ -158,7 +158,7 @@ extension ViewController: UIImagePickerControllerDelegate {
             // try to apply a cropping filter
             var ciImage = CIImage(cgImage: image.cgImage!)
             let filter = CIFilter(name:"CICrop")
-            let mult:Float = 6
+            let mult:Float = 12
             filter?.setValue(CIVector(x: 1, y: 1, z: 1+224*CGFloat(mult), w: 1+224*CGFloat(mult)), forKey: "inputRectangle")
             filter?.setValue(ciImage, forKey: "inputImage")
             
@@ -175,7 +175,7 @@ extension ViewController: UIImagePickerControllerDelegate {
             
             // enhance contrast of image
             let filter3 = CIFilter(name:"CIColorControls")
-            filter3?.setValue(1.5, forKey: "inputContrast")
+            filter3?.setValue(1.0, forKey: "inputContrast")
             filter3?.setValue(ciImage, forKey: "inputImage")
             ciImage = (filter3?.outputImage)!
             
