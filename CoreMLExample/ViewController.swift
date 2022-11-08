@@ -87,7 +87,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
         // update UI if we changed and an image exists
         if let image = self.mainImageView.image {
-            classifyImage(image: image)
+            _ = classifyImage(image: image)
         }
     }
     
@@ -107,6 +107,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
+
+//MARK: Extension Class for Classification
 extension ViewController: UIImagePickerControllerDelegate {
     
     //MARK: Camera View Callbacks
@@ -156,7 +158,8 @@ extension ViewController: UIImagePickerControllerDelegate {
             // try to apply a cropping filter
             var ciImage = CIImage(cgImage: image.cgImage!)
             let filter = CIFilter(name:"CICrop")
-            filter?.setValue(CIVector(x: 500, y: 500, z: 500+224*3, w: 500+224*3), forKey: "inputRectangle")
+            let mult:Float = 6
+            filter?.setValue(CIVector(x: 1, y: 1, z: 1+224*CGFloat(mult), w: 1+224*CGFloat(mult)), forKey: "inputRectangle")
             filter?.setValue(ciImage, forKey: "inputImage")
             
             ciImage = (filter?.outputImage)!
@@ -164,7 +167,7 @@ extension ViewController: UIImagePickerControllerDelegate {
             // apply filter for scaling image by factor of 1/3
             // as the image is expected to be 224x224 for these models
             let filter2 = CIFilter(name:"CILanczosScaleTransform")
-            filter2?.setValue(0.33, forKey: "inputScale")
+            filter2?.setValue(1.0/mult, forKey: "inputScale")
             filter2?.setValue(ciImage, forKey: "inputImage")
             ciImage = (filter2?.outputImage)!
             
@@ -201,7 +204,7 @@ extension ViewController: UIImagePickerControllerDelegate {
             self.classifierLabel.text = "Error, could not classify"
         }
         
-        // todo return the UIIMage for display
+        // return the UIIMage for display
         return UIImage(cgImage: cgImage!, scale: image.scale, orientation: image.imageOrientation)
     }
     
