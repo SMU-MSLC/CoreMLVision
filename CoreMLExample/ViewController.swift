@@ -142,7 +142,7 @@ extension ViewController: UIImagePickerControllerDelegate {
         //          -increase contrast
         //          -add some blurring/noise filters
         
-        // got this from here: http://wiki.hawkguide.com/wiki/Swift:_Convert_between_CGImage,_CIImage_and_UIImage
+        // code to convert CI to CG Image from here: http://wiki.hawkguide.com/wiki/Swift:_Convert_between_CGImage,_CIImage_and_UIImage
         func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
             let context = CIContext(options: nil)
             if let cgImage = context.createCGImage(inputImage, from: inputImage.extent){
@@ -154,6 +154,10 @@ extension ViewController: UIImagePickerControllerDelegate {
         var cgImage: CGImage? = nil
         
         if self.needProcessing {
+            // pre-processing steps:
+            // 1. crop to mult*224 by mult*224
+            // 2. scale to mult (so image is roughly 224 by 224)
+            // 3. enhance contrast
         
             // try to apply a cropping filter
             var ciImage = CIImage(cgImage: image.cgImage!)
@@ -192,19 +196,22 @@ extension ViewController: UIImagePickerControllerDelegate {
 //        }
         
         // generate request for vision and ML model
-        let request = VNCoreMLRequest(model: self.model!, completionHandler: resultsMethod)
+        let request = VNCoreMLRequest(model: self.model!,
+                                      completionHandler: resultsMethod)
         
         // add data to vision request handler
-        let handler = VNImageRequestHandler(cgImage: cgImage!, options: [:])
+        let handler = VNImageRequestHandler(cgImage: cgImage!,
+                                            options: [:])
         
         // now perform classification
         do{
             try handler.perform([request])
+            // completion handler gets request, asynchronously
         }catch _{
             self.classifierLabel.text = "Error, could not classify"
         }
         
-        // return the UIIMage for display
+        // return the UIIMage for display (so we see what we tried to classify
         return UIImage(cgImage: cgImage!, scale: image.scale, orientation: image.imageOrientation)
     }
     
