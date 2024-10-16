@@ -17,6 +17,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var classifierLabel: UILabel!
     
+    
+    // Image classification models (from CoreML)
+    // this model can classify regions and common places (bathroom, living room, etc.)
     lazy var googLeNet:GoogLeNetPlaces = {
         do{
             let config = MLModelConfiguration()
@@ -27,6 +30,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
     }()
     
+    // this model can classify objects, using a very tiny model
     lazy var squeezeNet:SqueezeNet = {
         do{
             let config = MLModelConfiguration()
@@ -37,6 +41,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
     }()
     
+    // this model can classify objects, using a larger model
     lazy var resNet:Resnet50 = {
         do{
             let config = MLModelConfiguration()
@@ -47,13 +52,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
     }()
     
+    // a state variable for tracking if the image has already been pre-processed
     var needProcessing = true
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+
     
     //MARK: ML Model Load
     // Load an image classifier and encapsulate in the Vision model class
@@ -63,6 +64,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
        return tmpModel
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
     
     // select some different classification models!
     @IBAction func modelSelectChanged(_ sender: UISegmentedControl) {
@@ -191,9 +197,6 @@ extension ViewController: UIImagePickerControllerDelegate {
             cgImage = image.cgImage
         }
         
-//        if cgImage == nil{
-//            cgImage = image.cgImage
-//        }
         
         // generate request for vision and ML model
         let request = VNCoreMLRequest(model: self.model!,
